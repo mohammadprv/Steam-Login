@@ -1,0 +1,26 @@
+{
+  "name": "SteamAuthentication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadprv/Steam-Login.git"
+  },
+  "keywords": [],
+  "author": "mohammad-peyravi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohammadprv/Steam-Login/issues"
+  },
+  "homepage": "https://github.com/mohammadprv/Steam-Login#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "nodemon": "^2.0.20",
+    "steam-login": "^0.1.7"
+  }
+}
