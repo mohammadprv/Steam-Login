@@ -1,16 +1,26 @@
+const { AllRoutes } = require('./routes/router');
+
 module.exports = class Application {
     
     #express = require('express');
     #app = this.#express();
 
     constructor(PORT) {
-        // this.configApplication()
+        this.configApplication()
         this.createServer(PORT);
         this.createRoutes();
         this.errorHandler();
     }
 
     configApplication() {
+        const session = require('express-session');
+        const steam = require('steam-login');
+        this.#app.use(session({resave: false, saveUninitialized: false, secret: "A Secret"}));
+        this.#app.use(steam.middleware({
+            realm: "http://localhost:3000/",
+            verify: "http://localhost:3000/verify",
+            apiKey: process.env.API_KEY
+        }));
     }
 
     createServer(PORT) {
@@ -27,7 +37,9 @@ module.exports = class Application {
                 message: "This is Steam-Login Project",
                 author: "Mohammad Peyravi"
             });
-        })
+        });
+
+        this.#app.use(AllRoutes);
     }
 
     errorHandler() {
